@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 导入css -->
+	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css">
+	<!-- 导入jquery -->
+	<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+	<!-- 导入fullpage -->
+	<script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
+	<!-- 导入动画库-->
+	<script type="text/javascript" src="js/jquery.easing.min.js"></script>	
+	<!-- 样式 -->
+	<style>
+      /*#dowebok .section{text-align:center;font:50px "Microsoft Yahei";color:#fff;}*/
+      /*导航栏开始*/
+      #menu { margin:0 0 0 300px; padding: 0; position: fixed; left: 10px; top: 10px; list-style-type: none; z-index: 70;}
+      #menu li {float:left;margin:0 10px 0 0;font-size:14px;}
+      #menu a {float:left;padding:10px 20px;background-color:#fff;color:#333; text-decoration:none;border-radius:10px;}
+      #menu .active a {color: #fff;background-color:#00EEEE;}
+      a{text-decoration: none;display: inline-block;width: 100%;height: 100%;color:#000;}
+      /*导航栏结束*/
+      /*第一屏*/
+      /*第一屏文字部分*/
+      #dowebok .section .section1{position:absolute;top:100px;left:41%;font:60px  "Comic Sans";text-shadow: 0 5px 6px red;position:absolute;z-index:3;}
+      /*图片部分*/
+      #dowebok .section .i1{position: absolute;left:10px;top:0px;z-index:2;}
+      #dowebok .section #pr{width:50%;height:100%;float:right;}
+      #dowebok .section #pr a{width:100%;height:100%;display:block;background:url("images/2.jpg") no-repeat;float:right;}
+      #dowebok .section #pl{width:50%;height:100%;float:left;}
+      #dowebok .section #pl a{width:100%;height:100%;display:block;background:url("images/7.jpg") no-repeat;float:left;}
+      #dowebok .section1 .i1{width:200px;height:200px}
+      /*第二屏*/
+      #dowebok .section2 .slide{width:100%;}
+      #dowebok .section2 img{width:100%;height:100%;}
+      /*第三屏*/
+      #dowebok .section3 .s1{width:34%;height:80%;position:absolute;float:left;left:0px;top:0px;overflow: hidden;}
+      #dowebok .section3 .s1 a{width:100%;height:100%;display:inline-block;}
+      #dowebok .section3 .s2{width:34%;height:80%;position:absolute;float:left;left:0px;top:0px;overflow: hidden;}
+      #dowebok .section3 .s1 a{width:100%;height:100%;display:inline-block;}
+      #dowebok .section3 .s3{width:33%;height:80%;position:absolute;float:right;right:-120%;top:0px;overflow: hidden;}
+      #dowebok .section3 .s1 a{width:100%;height:100%;display:inline-block;}
+      #dowebok .section3 img{width:100%;height:100%;display:block;border-radius:30%;border:1px solid orange;transition:all 0.4s ease 0.2s;}
+      #dowebok .section3 .s1:hover img{transform: scale(1.1);}
+      #dowebok .section3 .s2:hover img{transform: scale(1.1);}
+      #dowebok .section3 .s3:hover img{transform: scale(1.1);}
+      #dowebok .section3 .i3{position:absolute;left:-120%;px;top:80%;height:200px;line-height:50px;text-align: center;}
+      #dowebok .section3 .i3 p{margin:0 auto;width:80%;color:#EE2C2C;font-size: 18px;}
+      #dowebok .section3 .i3 p:hover{color:	#FF4500;font-size: 20px}
+      /*第四屏*/
+      #dowebok .section4 .s4-1{width:50%;height:75%;position:absolute;float:left;left:-120%;top:0px;}
+      #dowebok .section4 .s4-2{width:50%;height:75%;position:absolute;float:right;right:-120%;bottom:0px;}
+      #dowebok .section4 img{width:100%;height:100%;display: block;}
+      #dowebok .section4 .s4-p1{position: absolute;width:50%;bottom:-120%;left:0px;border-radius: 40%;text-align:center;border:1px solid #F0F0F0;font: 16px/1.5 "楷体";}
+      #dowebok .section4 .s4-p1:hover{color:red;font-weight: bold;}
+      #dowebok .section4 .s4-p2{position: absolute;width:50%;top:-120%;float:right;right:0px;border-radius:40%;text-align:center;border:1px solid #F0F0F0;font: 16px/1.5 "楷体";}
+      #dowebok .section4 .s4-p2:hover{color:red;font-weight: bold;}
+      /*第五屏*/
+      #dowebok .section5 .i1{position:absolute;left:10px;top:0px;z-index:2;width:120px;height:120px;}
+      #dowebok .section5 .s5-1{z-index:1;width:100%;height:100%;position: absolute;top:0px;left:0px;}
+      #dowebok .section5 .s5-1 img{display: block;width:100%;height:100%;}
+
+      #dowebok .section5 .s5-2{position: absolute;right:-120%;bottom:0px;width:32%;height:45%;}
+      #dowebok .section5 .s5-2 a{display: inline-block;width:100%;height:100%;}
+      #dowebok .section5 .s5-2 img{display: inline-block;width:100%;height:100%;}
+
+      #dowebok .section5 .s5-3{position: absolute;right:-240%;bottom:0px;width:34%;height:45%;}
+      #dowebok .section5 .s5-3 a{display: inline-block;width:100%;height:100%;}
+      #dowebok .section5 .s5-3 img{display: inline-block;width:100%;height:100%;}
+
+      #dowebok .section5 .s5-4{position: absolute;right:-360%;bottom:0px;width:35%;height:100%;}
+      #dowebok .section5 .s5-4 a{display: inline-block;width:100%;height:100%;}
+      #dowebok .section5 .s5-4 img{display: inline-block;width:100%;height:100%;}
+      #dowebok .section5 .s5-5{position: absolute;top:10%;left:-120%;width:55%;;}
+      #dowebok .section5 .s5-5 p{text-indent:2em;line-height:1.5;font-size: 20px;font-family: "黑体"}
+      /*第六屏*/
+      #dowebok .section6 .d6-1{position: absolute;background: black;left:20px;bottom:0px;width:3%;height:55%;}
+      #dowebok .section6 .d6-2{position: absolute;background: black;left:3%;bottom:0px;width:45%;height:4%;}
+      #dowebok .section6 .s6-1{position: absolute;left:-120%;float:left;top:8%;}
+      #dowebok .section6 .s6-2{position: absolute;float:right;bottom:0px;right:-120%;width:32%;height:25%;} 
+      #dowebok .section6 .s6-2 a{display: inline-block;width:100%;height:100%;}
+      #dowebok .section6 .s6-2 img{display: inline-block;width:100%;height:100%;}
+      #dowebok .section6 .s6-3{position: absolute;float:right;top:38%;right:-120%;width:36%;height:39%;}
+      #dowebok .section6 .s6-3 a{display: inline-block;width:100%;height:100%;}
+      #dowebok .section6 .s6-3 img{display: inline-block;width:100%;height:100%;}
+      #dowebok .section6 .s6-4{position: absolute;float:right;right:-120%;width:40%;height:34%;top:8%;}  
+      #dowebok .section6 .s6-4 a{display: inline-block;width:100%;height:100%;}
+      #dowebok .section6 .s6-4 img{display: inline-block;width:100%;height:100%;}
+      #dowebok .section6 p{position:absolute;width:44%;left:-120%;top:65%;text-indent:2em;font:16px/2 "楷体";font-weight: bold;transition: all 0.7s ease 0.3s;}
+      #dowebok .section6 p:hover{font-size: 18px;color:	#FF69B4;}
+     /*第七屏*/
+      #dowebok .section7{overflow: hidden;}
+      #dowebok .section7 .s7-1{float:left;width:15%;top:8%;position: absolute;left:3%;height:15%;}
+      #dowebok .section7 .s7-2{float:left;width:15%;top:8%;position: absolute;left:18%;height:15%;}
+      #dowebok .section7 .s7-3{float:left;width:15%;top:8%;position: absolute;left:33%;height:15%;}
+      #dowebok .section7 .s7-4{float:left;width:15%;top:25%;position: absolute;left:3%;height:15%;}
+      #dowebok .section7 .s7-5{float:left;width:15%;top:25%;position: absolute;left:18%;height:15%;z-index: 10;}
+      #dowebok .section7 .s7-6{float:left;width:15%;top:8%;position: absolute;left:73%;height:15%;}
+      #dowebok .section7 p{font-size:32px;float:right;width:40%;position:absolute;right:20%;top:45%;height:15%;z-index: 20;transition: all 3s ease 0.5s;}
+      #dowebok .section7 p:hover{font-size: 60px;color:#FFA500;top:35%;}
+</style>
+</head>
+<body>
+<!-- 菜单 -->
+<ul id="menu">
+	<li data-menuanchor="page1" class="active"><a href="#page1">登封“天地之中”</a></li>
+	<li data-menuanchor="page2"><a href="#page2">中岳寺庙</a></li>
+	<li data-menuanchor="page3"><a href="#page3">汉三阙</a></li>
+	<li data-menuanchor="page4"><a href="#page4">嵩岳文化</a></li>
+	<li data-menuanchor="page5"><a href="#page5">少林景致</a></li>
+	<li data-menuanchor="page6"><a href="#page6">观星台</a></li>
+	<li data-menuanchor="page7"><a href="#page7">等卿来</a></li>
+</ul>
+
+<div id="dowebok">
+    <!-- 第一屏 -->
+	<div class="section section1">
+	    <img  class="i1" src="images/1.png" width="200px" height="200px">
+        <div id="pr"><a href="#"></a></div>
+        <div id="pl"><a href="#"></a></div>
+	</div>
+	<!-- 第二屏 -->
+	<div class="section section2">
+		<div class="slide"><img src="images/13.jpg"></div>
+        <div class="slide"><img src="images/14.jpg"></div>
+        <div class="slide"><img src="images/15.jpg"></div>
+	</div>
+	<!-- 第三屏 -->
+	<div class="section section3">
+		<div>
+			<div class="s1"><a href=""><img src="images/16.jpg" alt=""></a></div>
+			<div class="s2"><a href=""><img src="images/17.jpg" alt=""></a></div>
+			<div class="s3"><a href=""><img src="images/23.jpg" alt=""></a></div>
+		<div class="i3">
+		   <p>汉三阙，又称东汉三阙，是河南省登封市“天地之中历史建筑群”组成部分，即——太室阙、少室阙、启母阙，是一种特殊的石雕艺术。创建于东汉时期的少室阙、启母阙，是中国最古老的国家级祭祀礼制建筑典范。</p>
+		</div>
+		</div>
+	</div>
+	<!-- 第四屏 -->
+	<div class="section section4">
+		<div class="s4-1"><a href="#"><img src="images/18.jpg" alt=""></a></div>
+		<div class="s4-p1">
+			<p>嵩阳书院是古代高等学府，是中国四大书院之一。嵩阳书院建制古朴雅致，中轴线上的主要建筑有五进，廊庑俱全。嵩阳书院因其独特的儒学教育建筑性质，被称为研究中国古代书院建筑、教育制度以及儒家文化的“标本”。</p>
+		</div>
+		<div class="s4-2"><a href="#"><img src="images/20.jpg" alt=""></a></div>
+		<div class="s4-p2">
+			<p>嵩岳寺塔塔高近40米，历经1400余年，风雨侵袭，仍巍然屹立。在结构、造型方面是一座很有学术价值的古建筑。窥视全塔，挺拔刚劲，雄伟秀丽，不仅是一件完美的艺术品，而且该塔造型深受古印度佛塔的影响，塔身各部做“宝箧印经塔”（阿育王塔）式样，并做出火焰形尖拱等，明显具有古印度犍陀罗艺术风格。</p>
+		</div>
+  </div>
+	<!-- 第五屏 -->
+	<div class="section section5">
+		<img  class="i1" src="images/2.png" width="200px" height="200px">
+        <div class="s5-1"><img src="images/9.jpg"></div>
+		<div class="s5-2"><a href="#"><img src="images/24.jpg" alt=""></a></div>
+		<div class="s5-3"><a href="#"><img src="images/11.jpg" alt=""></a></div>
+		<div class="s5-4"><a href="#"><img src="images/1.jpg" alt=""></a></div>
+		<div class="s5-5">
+		<p>少林寺是我国佛教禅宗祖庭，少林武术的发源地，是我国颇负盛名的寺院，被称为“天下第一名刹”。少林寺因建在少室山下的密林中故而得名。</p>
+		<p>少林寺塔林是少林寺历代和尚的坟墓，佛教界有名望。塔林是一座宏伟的建筑群，既是研究我国建筑史、艺术史和宗教史的珍贵宝藏，又是国内外参观旅游者的游览胜地。</p>
+		<p>初祖庵，又称“面壁庵”，始建于北宋宣和七年(1125年)，是宋代人为纪念少林寺初祖“达摩”面壁而修建的一座庵院，初祖庵三面临涧，古树掩映，乃山中胜境。</p>
+		</div>
+	</div>
+	<!-- 第六屏 -->
+	<div class="section section6">
+		<div class="s6-1"><a href="#"><img src="images/10.jpg"></a></div>
+		<div class="s6-2"><a href="#"><img src="images/25.jpg"></a></div>
+		<div class="s6-3"><a href="#"><img src="images/8.jpg"></a></div>
+		<div class="s6-4"><a href="#"><img src="images/4.jpg"></a></div>
+		<div class="d6-1"></div>
+		<div class="d6-2"></div>
+		<p>至元十三年（公元1276年），元代天文学家郭守敬创建登封观星台。它是中国现存完好的天文台之一，也是世界上最著名的天文科学建筑物之一，它反映了中国古代科学家在天文学上的卓越成就，在世界天文史、建筑史上都有很高的价值， 1961年3月4日被国务院公布为第一批中国重点文物保护单位。</p>
+	</div>
+	<!-- 第七屏 -->
+	<div class="section section7">
+		<a href="#">
+		<div class="s7-1"><img src="images/26.jpg"></div>
+		<div class="s7-2"><img src="images/27.jpg"></div>
+		<div class="s7-3"><img src="images/28.jpg"></div>
+		<div class="s7-4"><img src="images/29.jpg"></div>
+		<div class="s7-5"><img src="images/30.jpg"></div>
+		<div class="s7-6"><img src="images/31.jpg"></div>
+		<p>我在这里等你！</p>
+		</a>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$('#dowebok').fullpage({
+		sectionsColor:['#ffffff', '#ffffff', 'white','#FFEBCD', "#FF4500","#00FFFF","#9AC0CD"],
+		continuousVertical: true,  //循环滚动
+		//绑定菜单
+		anchors: ['page1', 'page2', 'page3', 'page4','page5','page6','page7'],
+		menu: '#menu',
+		'navigation': true,       //右侧小圆点的显示
+		continuousVertical: true,  //纵向自动滚动
+		 // loopBottom: true    //滚动到第一张
+         //第三屏回调函数
+         afterLoad: function(anchorLink, index){
+         	if(index == 3){
+				$('.section3').find('.s2').delay(500).animate({
+					left: '34%'
+				}, 1500, 'easeOutExpo');
+				$('.section3').find('.s3').delay(500).animate({
+					right: '0px'
+				}, 1500, 'easeOutExpo');
+				$('.section3').find('.i3').delay(500).animate({
+					left: '0px'
+				}, 2000, 'easeOutExpo');
+			}
+			if(index == 4){
+				$('.section4').find('.s4-1').delay(500).animate({
+					left: '0px'
+				}, 1500, 'easeOutExpo');
+				$('.section4').find('.s4-2').delay(500).animate({
+					right: '0px'
+				}, 1500, 'easeOutExpo');
+				$('.section4').find('.s4-p1').delay(500).animate({
+					bottom: '5%'
+				}, 2000, 'easeOutExpo');
+				$('.section4').find('.s4-p2').delay(500).animate({
+					top: '5%'
+				}, 2000, 'easeOutExpo');
+			}
+			 //第五屏
+            if(index == 5){
+				$('.section5').find('.s5-1').delay(500).animate({
+					left: '-120%'
+				}, 3500, 'easeOutExpo');
+				$('.section5').find('.s5-2').delay(500).animate({
+					left: '0px'
+				}, 1500, 'easeOutExpo');
+				$('.section5').find('.s5-3').delay(500).animate({
+					right: '35%'
+				}, 3000, 'easeOutExpo');
+				$('.section5').find('.s5-4').delay(500).animate({
+					right: '0px'
+				}, 3500, 'easeOutExpo');
+				$('.section5').find('.s5-5').delay(500).animate({
+					left: '10%'
+				}, 3500, 'easeOutExpo');
+			}
+			 //第六屏
+            if(index == 6){
+				$('.section6').find('.s6-1').delay(500).animate({
+					left: '5%'
+				}, 1000, 'easeOutExpo');
+				$('.section6').find('p').delay(500).animate({
+					left: '8%'
+				}, 1000, 'easeOutExpo');
+				$('.section6').find('.s6-2').delay(500).animate({
+					right:'3%'
+				}, 1000, 'easeOutExpo');
+				$('.section6').find('.s6-3').delay(500).animate({
+					right:'3%'
+				}, 2000, 'easeOutExpo');
+				$('.section6').find('.s6-4').delay(500).animate({
+					right:'3%'
+				}, 2500, 'easeOutExpo');
+
+			}
+			
+		},
+		onLeave: function(index, direction){
+			// 第三屏
+			if(index == '3'){
+				$('.section3').find('.s2').delay(500).animate({
+					left: '0px'
+				}, 1500, 'easeOutExpo');
+				$('.section3').find('.s3').delay(500).animate({
+					right: '-120%'
+				}, 1500, 'easeOutExpo');
+				$('.section3').find('.i3').delay(500).animate({
+					left: '-120%'
+				}, 1500, 'easeOutExpo');
+			}
+            // 第四屏
+			if(index == '4'){
+				$('.section4').find('.s4-1').delay(500).animate({
+					left: '-120%'
+				}, 1500, 'easeOutExpo');
+				$('.section4').find('.s4-2').delay(500).animate({
+					right: '-120%'
+				}, 1500, 'easeOutExpo');
+				$('.section4').find('.s4-p1').delay(500).animate({
+					bottom: '-120%'
+				}, 2000, 'easeOutExpo');
+				$('.section4').find('.s4-p2').delay(500).animate({
+					top: '-120%'
+				}, 2000, 'easeOutExpo');
+			}
+            if(index == 5){
+            	$('.section5').find('.s5-2').delay(500).animate({
+					left: '-120%'
+				}, 1500, 'easeOutExpo');
+                $('.section5').find('.s5-3').delay(500).animate({
+					right: '-240%'
+				}, 1500, 'easeOutExpo');
+				$('.section5').find('.s5-4').delay(500).animate({
+					right: '-360%'
+				}, 1500, 'easeOutExpo');
+				$('.section5').find('.s5-1').delay(500).animate({
+					left: '0px'
+				}, 1000, 'easeOutExpo');
+                $('.section5').find('.s5-5').delay(500).animate({
+					left: '-120%'
+				}, 1500, 'easeOutExpo');
+			}
+			//第六屏
+            if(index == 6){
+				$('.section6').find('.s6-1').delay(500).animate({
+					left: '-120%'
+				}, 1500, 'easeOutExpo');
+				$('.section6').find('p').delay(500).animate({
+					left: '-120%'
+				}, 1000, 'easeOutExpo');
+				$('.section6').find('.s6-2').delay(500).animate({
+					right:'-120%'
+				}, 1500, 'easeOutExpo');
+				$('.section6').find('.s6-3').delay(500).animate({
+					right:'-120%'
+				}, 2500, 'easeOutExpo');
+				$('.section6').find('.s6-4').delay(500).animate({
+					right:'-120%'
+				}, 3500, 'easeOutExpo');
+			}
+		}
+});
+
+	 //自动滚动
+	    /*setInterval(function(){
+	        $.fn.fullpage.moveSectionDown();
+	    }, 3000);*/
+	    //窗口尺寸发生改变  即响应式
+	     $(window).resize(function(){
+	        autoScrolling();
+	    });
+
+	     function autoScrolling(){
+        var $ww = $(window).width();
+        if($ww <1024){
+            $.fn.fullpage.setAutoScrolling(false);//窗口尺寸小于1024就停止自动滚动
+        } else {
+            $.fn.fullpage.setAutoScrolling(true);
+        }
+    }
+    // 每次打开窗口就执行此函数
+    autoScrolling();
+
+    //向右自动滚动
+     setInterval(function(){
+        $.fn.fullpage.moveSlideRight();
+    }, 3000);
+
+</script>
+</body>
+</html>
